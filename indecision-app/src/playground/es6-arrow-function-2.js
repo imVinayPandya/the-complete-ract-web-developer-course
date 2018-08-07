@@ -1,5 +1,3 @@
-"use strict";
-
 // arguments object - no longer bound with arrow functions
 
 // const add = function (a, b) {
@@ -8,10 +6,10 @@
 // }
 // console.log(add(30, 40, 31));
 
-var add = function add(a, b) {
+const add = (a, b) => {
   // console.log(arguments); // ReferenceError: arguments is not defined
   return a + b;
-};
+}
 
 console.log(add(30, 40, 31));
 
@@ -32,9 +30,9 @@ console.log(add(30, 40, 31));
 
 // user.printPlacedLive();
 
-var user = {
+const user = {
   name: "Vinay",
-  cities: ["Surat", "Delhi", "Jaladhar", "Ahmedabad"]
+  cities: ["Surat", "Delhi", "Jaladhar", "Ahmedabad"],
   //////////////////////////////////////////
   // 1st problem
   //////////////////////////////////////////
@@ -85,15 +83,11 @@ var user = {
 
 // challenge
 
-var multiplier = {
+const multiplier = {
   numbers: [1, 2, 3, 4, 5],
   multiplyBy: 2,
-  multiply: function multiply() {
-    var _this = this;
-
-    return this.numbers.map(function (num) {
-      return num * _this.multiplyBy;
-    });
+  multiply() {
+    return this.numbers.map((num) => num * this.multiplyBy);
   }
 };
 
