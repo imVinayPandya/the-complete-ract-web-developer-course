@@ -10,7 +10,7 @@ const app = {
 const onRemoveAll = (e) => {
   e.preventDefault();
   app.options = [];
-  
+
   renderApp();
 };
 
@@ -28,6 +28,8 @@ const onFormSubmit = (e) => {
 
 const appRoot = document.getElementById('app');
 
+const numbers = [10, 20, 30, 40, 50];
+
 const renderApp = () => {
 
   const template = (
@@ -40,8 +42,11 @@ const renderApp = () => {
       </p>
       <button onClick={onRemoveAll}>Remove All</button>
       <ol>
-        <li>Item one</li>
-        <li>Item two</li>
+      {
+        app.options.map((item) => {
+          return <li key={item}>{item}</li>;
+        })
+      }
       </ol>
 
       <form onSubmit={onFormSubmit}>

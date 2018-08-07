@@ -30,6 +30,8 @@ var onFormSubmit = function onFormSubmit(e) {
 
 var appRoot = document.getElementById('app');
 
+var numbers = [10, 20, 30, 40, 50];
+
 var renderApp = function renderApp() {
 
   var template = React.createElement(
@@ -63,16 +65,13 @@ var renderApp = function renderApp() {
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two'
-      )
+      app.options.map(function (item) {
+        return React.createElement(
+          'li',
+          { key: item },
+          item
+        );
+      })
     ),
     React.createElement(
       'form',
