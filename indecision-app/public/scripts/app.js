@@ -1,100 +1,88 @@
-"use strict";
+'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log("App.js is running!");
 
-// const add = function (a, b) {
-//   console.log(arguments); // this will work
-//   return a + b;
-// }
-// console.log(add(30, 40, 31));
+// JSX - JavaScript XML
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer.',
+  options: ['One', 'Two']
+};
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title ? app.title : undefined
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.subtitle && app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    (app.options && app.options.length) > 0 ? 'Here are your options' : 'No options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Item one'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Item two'
+    )
+  )
+);
 
-var add = function add(a, b) {
-  // console.log(arguments); // ReferenceError: arguments is not defined
-  return a + b;
+var count = 0;
+// const someId = "myId";
+
+var addOne = function addOne() {
+  console.log("Add one");
 };
 
-console.log(add(30, 40, 31));
-
-// this keyword = no longer found
-
-// const user = {
-//   name: "Vinay",
-//   cities: ["Surat", "Delhi", "Jaladhar", "Ahmedabad"],
-//   printPlacedLive: function () {
-//     console.log(this.name);
-//     console.log(this.cities);
-
-//     this.cities.forEach(function(city) {
-//       console.log(this.name, " is lived in ", city); // this.name won't work here
-//     });
-//   }
-// };
-
-// user.printPlacedLive();
-
-var user = {
-  name: "Vinay",
-  cities: ["Surat", "Delhi", "Jaladhar", "Ahmedabad"]
-  //////////////////////////////////////////
-  // 1st problem
-  //////////////////////////////////////////
-  // printPlacedLive: function () {
-  //   console.log(this.name);
-  //   console.log(this.cities);
-  //   this.cities.forEach(function (city) {
-  //     console.log(this.name, " has lived in ", city); // this.name won't work here
-  //   });
-  // }
-
-  // printPlacedLive: function () {
-  //   console.log(this.name);
-  //   console.log(this.cities);
-  //   this.cities.forEach((city) => {
-  //     console.log(this.name, " has lived in ", city); // this.name will work here
-  //   });
-  // }
-
-
-  //////////////////////////////////////////
-  // 2nd problem
-  //////////////////////////////////////////
-  // printPlacedLive:  () => {
-  //   console.log(this.name); // this.name won't work
-  //   console.log(this.cities);
-  //   this.cities.forEach((city) => {
-  //     console.log(this.name, " has lived in ", city);
-  //   });
-  // }
-
-  // printPlacedLive: function () {
-  //   console.log(this.name);// this.name will work
-  //   console.log(this.cities);
-
-  //   this.cities.forEach((city) => { 
-  //     console.log(this.name, " has lived in ", city);
-  //   });
-  // }
-
-  //////////// ES6 way to solve 2nd problem
-  // printPlacedLive() {
-  //   return this.cities.map((city) => `${this.name} has lived in ${city}`);
-  // }
+var minusOne = function minusOne() {
+  console.log("minus one");
 };
 
-// console.log(user.printPlacedLive());
-
-// challenge
-
-var multiplier = {
-  numbers: [1, 2, 3, 4, 5],
-  multiplyBy: 2,
-  multiply: function multiply() {
-    var _this = this;
-
-    return this.numbers.map(function (num) {
-      return num * _this.multiplyBy;
-    });
-  }
+var reset = function reset() {
+  console.log("Reset");
 };
 
-console.log(multiplier.multiply());
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    'Count: ',
+    count
+  ),
+  React.createElement(
+    'button',
+    { onClick: addOne },
+    '+1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: minusOne },
+    '-1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: reset },
+    'Reset'
+  )
+);
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
