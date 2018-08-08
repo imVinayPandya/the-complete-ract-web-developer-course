@@ -32,6 +32,11 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handlePick = this.handlePick.bind(this);
+  }
+
   handlePick() {
     alert('handlePick');
   }
@@ -46,8 +51,14 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRemoveAll = this.handleRemoveAll.bind(this)
+  }
+
   handleRemoveAll() {
     alert('handleRemoveAll');
+    console.log(this.props.options);
   }
 
   render() {
@@ -76,13 +87,18 @@ class Option extends React.Component {
 }
 
 class AddOption extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAddOption = this.handleAddOption.bind(this);
+  }
+
   handleAddOption(e) {
     e.preventDefault();
     console.log('click');
 
     const option = e.target.elements.option.value;
 
-    if(option) {
+    if (option) {
       alert(option);
     }
   }
