@@ -1,36 +1,35 @@
-console.log("App.js is running!");
+class VisibilityToggel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleToggelVisibility = this.handleToggelVisibility.bind(this);
+    this.state = {
+      title: 'Visibility Toggel',
+      subtitle: 'Put your life in the hands of a computer.',
+      showDetails: false
+    };
+  }
 
-// JSX - JavaScript XML
-const app = {
-  title: 'Visibility Toggle',
-  subtitle: 'Put your life in the hands of a computer.',
-  showDetails: false
-};
-
-const onShowDetails = () => {
-  app.showDetails = !app.showDetails;
-  renderApp();
-};
-
-const appRoot = document.getElementById('app');
-
-const renderApp = () => {
-
-  const template = (
-    <div>
-      <h1>{app.title ? app.title : undefined}</h1>
-      <button onClick={onShowDetails}>
-      {
-        app.showDetails ? 'Hide Details' : 'Show Details' 
+  handleToggelVisibility(e) {
+    e.preventDefault();
+    this.setState((prevState) => {
+      return {
+        showDetails: !prevState.showDetails
       }
-      </button>
-      {
-        app.showDetails ? <p>{app.subtitle && app.subtitle}</p> : null
-      }
-    </div>
-  );
+    });
+  }
 
-  ReactDOM.render(template, appRoot);
-};
+  render() {
+    const { title, subtitle, showDetails } = this.state;
+    return (
+      <div>
+        <h1>{title}</h1>
+        <button onClick={this.handleToggelVisibility}>
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
+        <p>{showDetails && subtitle}</p>
+      </div>
+    );
+  }
+}
 
-renderApp();
+ReactDOM.render(<VisibilityToggel />, document.getElementById('app'));
