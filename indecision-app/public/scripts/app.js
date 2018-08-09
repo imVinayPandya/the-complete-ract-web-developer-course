@@ -29,6 +29,28 @@ var IndecisionApp = function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // after component got mounted
+      console.log('componentDidMount');
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      // after component get updated
+      console.log('componentDidUpdate');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      // before component get unmount
+      // to this in action
+      // open developer console in chrome, run following line
+      // ReactDOM.render(React.createElement('p'), document.getElementById('app'))
+      // it will print 'componentWillUnmount'
+      console.log('componentWillUnmount');
+    }
+  }, {
     key: 'handleDeleteOptions',
     value: function handleDeleteOptions() {
       this.setState(function () {
