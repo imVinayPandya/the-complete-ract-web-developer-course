@@ -19,7 +19,7 @@ var IndecisionApp = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
     _this.state = {
-      options: props.options
+      options: []
     };
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
@@ -132,10 +132,6 @@ var IndecisionApp = function (_React$Component) {
 
   return IndecisionApp;
 }(React.Component);
-
-IndecisionApp.defaultProps = {
-  options: []
-};
 
 var Header = function Header(props) {
   var title = props.title;
