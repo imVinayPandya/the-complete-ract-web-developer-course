@@ -6,5 +6,10 @@ module.exports = {
   output: {
     path: outputPath,
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      { loader: 'babel-loader', test: /\.js$/, exclude: /node_modules/ }
+    ]
   }
 };
