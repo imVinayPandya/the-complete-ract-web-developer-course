@@ -7,7 +7,12 @@ const Options = (props) => {
 
   return (
     <div>
-      <button onClick={handleDeleteOptions}>Remove All</button>
+      <button
+        className='button button--link'
+        onClick={handleDeleteOptions}
+      >
+        Remove All
+      </button>
       {options.length === 0 && <p>Please add an update to get started!</p>}
       {
         options.map((option) => (
