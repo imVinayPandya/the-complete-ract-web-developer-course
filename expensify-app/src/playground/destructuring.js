@@ -1,4 +1,12 @@
 //
+// Distructing function parameters
+//
+// const add = ({a, b}, c) => {
+//   return a + b + c;
+// };
+// console.log(add({ a: 10, b: 3 }, 100));
+
+//
 // Object destructing
 //
 
