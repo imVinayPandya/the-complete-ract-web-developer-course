@@ -1,15 +1,37 @@
 import { createStore, combineReducers } from 'redux';
+import { v4 as uuidV4 } from 'uuid';
 
 //
 // Expenses reducer
 //
-// ADD_EXPRENSE
-// EDIT_EXPRENSE
-// REMOVE_EXPRENSE
+
+// ADD_EXPENSES
+const addExpense = ({ description = '', note = '', amount = '', createdAt = 0 } = {}) => ({
+  type: 'ADD_EXPENSE',
+  expense: {
+    id: uuidV4(),
+    description,
+    note,
+    amount,
+    createdAt
+  }
+});
+
+// REMOVE_EXPENSE
+const removeExpense = ({ id } = {}) => ({
+  type: 'REMOVE_EXPENSE',
+  id
+});
+
+// EDIT_EXPENSES
 
 const expensesReducerDefaultValue = [];
 const expensesReducer = (state = expensesReducerDefaultValue, action) => {
   switch (action.type) {
+    case 'ADD_EXPENSE':
+      return [...state, action.expense]
+    case 'REMOVE_EXPENSE':
+      return state.filter(({ id }) => id !== action.id);
     default:
       return state;
   }
@@ -45,7 +67,15 @@ const store = createStore(
   })
 );
 
-console.log(store.getState());
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+
+const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
+const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300 }));
+
+store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 //#region reducer rules and some info
 // Reducer : rules for reducer
